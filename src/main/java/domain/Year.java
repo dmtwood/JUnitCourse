@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.Objects;
+
 public class Year {
     private final int year;
 
@@ -17,5 +19,18 @@ public class Year {
     @Override
     public String toString() {
         return "Year: " + year;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Year)) return false;
+        Year year1 = (Year) o;
+        return year == year1.year;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(year);
     }
 }

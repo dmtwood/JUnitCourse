@@ -48,5 +48,35 @@ class AccountTest {
                 .isEqualByComparingTo("11");
     }
 
+    @Test
+    @DisplayName("Een negatief bedrag storten lukt niet.")
+    void depositingANegativeNumberThrowsAnIllegalArgumentException(){
+        Assertions
+                .assertThatIllegalArgumentException()
+                .isThrownBy(
+                        () -> account.deposit( BigDecimal.valueOf(-1) )
+                );
+    }
+
+    @Test
+    @DisplayName("0 storten lukt niet.")
+    void depositingAZeroThrowsAnIllegalArgumentException(){
+        Assertions
+                .assertThatIllegalArgumentException()
+                .isThrownBy(
+                        () -> account.deposit( BigDecimal.ZERO )
+                );
+    }
+
+
+    @Test
+    void depositingNullthrowsNullPointerException(){
+        Assertions
+                .assertThatNullPointerException()
+                .isThrownBy(
+                        () -> account.deposit(null)
+                );
+    }
+
 
 }

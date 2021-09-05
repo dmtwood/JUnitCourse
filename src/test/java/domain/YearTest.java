@@ -36,4 +36,25 @@ class YearTest {
         Year year = new Year(2000);
         Assertions.assertThat(year).hasToString("Year: 2000");
     }
+
+    @Test
+    void sameYearsAreEqual(){
+        Assertions
+                .assertThat(new Year(2022))
+                .isEqualTo(new Year(2022));
+    }
+
+    @Test
+    void differentYearsAreNotEqual(){
+        Assertions
+                .assertThat(new Year(2022))
+                .isNotEqualTo(new Year(2021));
+    }
+
+    @Test
+    void sameYearsHaveSameHashCodes() {
+        Assertions.
+                assertThat( new Year(1))
+                .hasSameHashCodeAs(new Year(1));
+    }
 }
