@@ -1,6 +1,7 @@
 package domain;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,6 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 * ( last 12 digits, append 1114, append first two digits ) % 97 = 1
  */
 public class AccountNumberTest {
+
+
 
     @Test
     void BE72091012240116isACorrectBeAccount() {
@@ -93,8 +96,9 @@ public class AccountNumberTest {
     @Test
     void toStringShowsCorrectString() {
         Assertions
-                .assertThat(new AccountNumber("BE72091012240116"))
+                .assertThat(new AccountNumber("BE72091012240116") )
                 .hasToString("Rekeningnummer: BE72091012240116");
     }
+
 
 }

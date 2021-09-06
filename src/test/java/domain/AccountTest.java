@@ -78,5 +78,65 @@ class AccountTest {
                 );
     }
 
+    @Test
+    void getDeposits_ANewAccountNrHasNoDeposits() {
+        Assertions
+                .assertThat(account.getDeposits() )
+                .isEmpty();
+    }
+
+    @Test
+    void  getDeposits_OnAaNewAccountNrWithOneDepositReturnsThatDeposit() {
+        account.deposit(BigDecimal.TEN);
+        Assertions
+                .assertThat(account.getDeposits())
+                .containsOnly(BigDecimal.TEN);
+    }
+
+    @Test
+    void getDeposits_OnANewAccountNrWithTwoDepositsReturnsThoseDeposits() {
+        account.deposit(BigDecimal.TEN);
+        account.deposit(BigDecimal.ONE);
+        Assertions
+                .assertThat(account.getDeposits())
+                .containsExactly(BigDecimal.TEN, BigDecimal.ONE);
+    }
+
+    @Test
+    void getDepositsStorted_OnANewAccounNrtWithThreeDepositsReturnsThoseDepositsSorted() {
+        account.deposit(BigDecimal.TEN);
+        account.deposit(BigDecimal.ONE);
+        account.deposit(BigDecimal.valueOf(2));
+        Assertions
+                .assertThat(account.getDepositsSorted())
+                .containsExactly(BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.TEN);
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
